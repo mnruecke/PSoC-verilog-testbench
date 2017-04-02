@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot">
+<ExpandedNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\TopDesign</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Pins</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Analog</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Clocks</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Interrupts</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\DMA</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\System</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Directives</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Flash Security</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\EEPROM</v>
+<v>MPI_Platform\MPI_4_Channel\Header Files</v>
+<v>MPI_Platform\MPI_4_Channel\Header Files\cyapicallbacks.h</v>
+<v>MPI_Platform\MPI_4_Channel\Source Files</v>
+<v>MPI_Platform\MPI_4_Channel\Source Files\main.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cmsis_armcc.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cmsis_gcc.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\Em_EEPROM_1\Em_EEPROM_1.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\Em_EEPROM_1\Em_EEPROM_1.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\isr_rx</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\isr_rx\isr_rx.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\isr_rx\isr_rx.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED\LED.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED\LED.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED\LED_aliases.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1_BOOT.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1_INT.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1_PM.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1_IntClock</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1_IntClock\UART_1_IntClock.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1_IntClock\UART_1_IntClock.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydevice.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cyfitter.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cymetadata.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\project.h</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\TopDesign</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Pins</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Analog</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Clocks</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Interrupts</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\DMA</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\System</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Directives</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\Flash Security</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.cydwr\EEPROM</v>
+<v>MPI_Platform\MPI_4_Channel\Header Files</v>
+<v>MPI_Platform\MPI_4_Channel\Header Files\cyapicallbacks.h</v>
+<v>MPI_Platform\MPI_4_Channel\Source Files</v>
+<v>MPI_Platform\MPI_4_Channel\Source Files\main.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\cy_boot</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\Em_EEPROM_1</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\isr_rx</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\isr_rx\isr_rx.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\isr_rx\isr_rx.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED\LED.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED\LED.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\LED\LED_aliases.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1.h</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1_BOOT.c</v>
+<v>MPI_Platform\MPI_4_Channel\Generated_Source\PSoC5\UART_1\UART_1_INT.c</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\TopDesign</v>
+<v>MPI_Platform\MPI_4_Channel\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\TopDesign</v>
+<v>MPI_Platform\MPI_4_Channel\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\Em_EEPROM_1.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_rx.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\LED.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_INT.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_IntClock.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_PM.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\MPI_4_Channel.elf</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\MPI_4_Channel.hex</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\MPI_4_Channel.map</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.gpdsc</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.rpt</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\Em_EEPROM_1.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_rx.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\LED.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_INT.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_IntClock.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_1_PM.lst</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\MPI_4_Channel.elf</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\MPI_4_Channel.hex</v>
+<v>MPI_Platform\MPI_4_Channel\CortexM3\ARM_GCC_493\Debug\MPI_4_Channel.map</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.gpdsc</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel.rpt</v>
+<v>MPI_Platform\MPI_4_Channel\MPI_4_Channel_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\PSoC 5LP Architecture TRM</v>
+<v>MPI_Platform\MPI_4_Channel\CY8C58LP Family Datasheet</v>
+<v>MPI_Platform\MPI_4_Channel\System Reference Guides</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>MPI_Platform</v>
+<v>MPI_Platform\MPI_4_Channel</v>
+<v>MPI_Platform\MPI_4_Channel\PSoC 5LP Architecture TRM</v>
+<v>MPI_Platform\MPI_4_Channel\CY8C58LP Family Datasheet</v>
+<v>MPI_Platform\MPI_4_Channel\System Reference Guides</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\MPI_4_Channel.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\MPI_4_Channel.cydsn\MPI_4_Channel.cydwr" />
+<name v=".\MPI_4_Channel.cydsn\main.c" />
+<name v=".\MPI_4_Channel.cydsn\Generated_Source\PSoC5\project.h" />
+<name v=".\MPI_4_Channel.cydsn\Generated_Source\PSoC5\LED.h" />
+<name v=".\MPI_4_Channel.cydsn\cyapicallbacks.h" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="695, 440" SelectedTabbedMdiWindow="a0a4c866-0ec9-4f6b-894a-f6e5dab7ab55"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="7f01cd06-c385-4b37-a15c-449c6d9fc47e" /><DocumentWindow Key="68a9a548-a5ca-48a3-ac2c-1a49f8a51283" Guid="5ca4a5a4-33b8-42d4-b700-05de750d6563" /><DocumentWindow Key="8c189f5c-60f2-4f74-84a0-2591fe93f399" Guid="a3b53ad4-096f-4344-8b41-1bc2bf30ed67" /><DocumentWindow Key="c1f55c4c-9e1c-48d2-8b14-6030b844a4b4" Guid="a0a4c866-0ec9-4f6b-894a-f6e5dab7ab55" /><DocumentWindow Key="cd056ca6-f302-4713-b6fe-2f87f7988c7a" Guid="7ef41b60-865e-415e-ab10-777488e03f9a" /><DocumentWindow Key="3392293d-1d49-4950-a44c-403fc6058440" Guid="808bdee5-10a7-4b8a-ac25-a46c92c950e8" /><DocumentWindow Key="4a1bae88-06bf-4f0f-8157-554f22483976" Guid="9afd0813-1aae-42f4-896f-9e19139cf385" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

@@ -1,0 +1,29 @@
+--------------- Rebuild Started: 03/19/2017 17:30:14 Project: main.c, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c main.c -o .\CortexM3\ARM_GCC_493\Debug\main.o
+main.c: In function 'main':
+main.c:57:19: warning: unused variable 'value2' [-Wunused-variable]
+     float value1, value2; 
+                   ^
+main.c:57:11: warning: unused variable 'value1' [-Wunused-variable]
+     float value1, value2; 
+           ^
+main.c:56:11: warning: unused variable 'wave_part' [-Wunused-variable]
+     uint8 wave_part[100];
+           ^
+main.c:55:15: warning: unused variable 'l' [-Wunused-variable]
+     int i,j,k,l;
+               ^
+main.c:55:13: warning: unused variable 'k' [-Wunused-variable]
+     int i,j,k,l;
+             ^
+main.c:55:11: warning: unused variable 'j' [-Wunused-variable]
+     int i,j,k,l;
+           ^
+main.c:55:9: warning: unused variable 'i' [-Wunused-variable]
+     int i,j,k,l;
+         ^
+main.c: In function 'isr_rx_handle':
+main.c:100:10: warning: unused variable 'ch' [-Wunused-variable]
+     char ch;
+          ^
+--------------- Rebuild Succeeded: 03/19/2017 17:30:14 ---------------
