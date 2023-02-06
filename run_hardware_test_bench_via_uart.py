@@ -18,13 +18,13 @@ import matplotlib.pyplot as plt
 """ main settings """
 
 # Serial port:
-serialPort = '\\\\.\\COM10' # USBFS 8; UART 22 
+serialPort = '\\\\.\\COM10'
 baudrate = 115200
 time_out = 1
 
 
 # Testbench input data
-i_tb_input     = bytes([ 0b_1010_1111 ])
+i_tb_input_lsb  = 0b_1010_1111
 
 
 """ END - main settings """
@@ -39,18 +39,20 @@ try: # open and interact with serial port
     
     for repetition_i in range( 1 ):
     
-        print( "tb input port:\t{}".format( 
-                    bin(int.from_bytes( i_tb_input, 'big'))
-        ))
+        print( "tb input port lsb:\t\t{}".format( bin(i_tb_input_lsb)))
         
-        ser.write( i_tb_input )
+        ser.write( bytes([ i_tb_input_lsb ]))
         time.sleep( 0.005 )     
-        o_tb_output = ser.read(1)        
+        o_tb_output_msb = ser.read(1)        
+        o_tb_output_lsb = ser.read(1)        
         
-        print( "tb output port:\t{}".format(
-                    bin(int.from_bytes( o_tb_output, 'big' ))
-        ))
-                    
+        o_tb_output_msb = int.from_bytes( o_tb_output_msb, 'big' )
+        print( "tb output port msb:\t\t{}".format( bin(o_tb_output_msb)))
+        o_tb_output_lsb = int.from_bytes( o_tb_output_lsb, 'big' )
+        print( "tb output port lsb:\t\t{}".format( bin(o_tb_output_lsb)))
+        
+        #print( "expected output: \t\t{}".format( bin( i_tb_input_lsb**2 )))
+                
 
 finally: # close serial port
     ser.close()

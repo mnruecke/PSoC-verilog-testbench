@@ -48,9 +48,12 @@ CY_ISR( isr_rx_handle )
     char putty = UART_1_GetChar();
     if( putty == 'x' ) CySoftwareReset();
     
+    // tb data in
+    i_Testbench8_LSB_Write( (uint8)putty );
     
-    i_Testbench8_1_Write( (uint8)putty );
-    UART_1_PutChar( o_Testbench8_1_Read() );
+    // tb data out
+    UART_1_PutChar( o_Testbench8_MSB_Read() );
+    UART_1_PutChar( o_Testbench8_LSB_Read() );
     
     LED_Write(1); CyDelay(50); LED_Write(0); CyDelay(50);
 }//END CY_ISR( isr_rx_handle )
