@@ -27,7 +27,7 @@ module verilog_example_2 (
 	input   i_Clock,
 	input   i_Rx_Serial
 );
-    parameter CLKS_PER_BIT = 20;
+    parameter CLKS_PER_BIT = 208;
 
 //`#start body` -- edit after this line, do not edit this line
 

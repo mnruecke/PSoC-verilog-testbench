@@ -51,7 +51,7 @@ CY_ISR( isr_rx_handle )
 { 
     connect_to_example_2();
     
-    LED_Write(1); CyDelay(50); LED_Write(0); CyDelay(50);
+    LED_Write(1); CyDelayUs(500); LED_Write(0); CyDelayUs(500);
 }//END CY_ISR( isr_rx_handle )
 
 void connect_to_example_1(void){

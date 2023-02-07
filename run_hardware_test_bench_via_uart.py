@@ -72,7 +72,7 @@ def run_example_2():
     r_rx_in = b'\x01'
     tb_test_byte = bytes([ 0b_01010011 ])
     tb_state = ['idle', 'startbit', 'databits', 'stopbit']
-    for tb_clk in range(200):
+    for tb_clk in range(172):
              
         if tb_clk % 2 == 0:
             clock   = not clock     
@@ -82,7 +82,7 @@ def run_example_2():
         else:
             if clock_count == 10: # generate start bit
                 r_rx_in = b'\x00'
-            if clock_count == 10 + (1+0)*clocks_per_bit: # send 0xff
+            if clock_count == 10 + (1+2)*clocks_per_bit: # send 0xff
                 r_rx_in = b'\x01'
             ser.write( r_rx_in )   
             o_byte = ser.read(5)     
