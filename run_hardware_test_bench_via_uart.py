@@ -66,10 +66,9 @@ def run_example_2():
     
     # 2) Generate test pattern for uart rx
     clock = 0
-    for half_clk in range(5):
-        
-        
-        if o_byte[0] % 2 == 0:
+    for quarter_clk in range(200):
+             
+        if quarter_clk % 2 == 0:
             ser.write( bytes([clock]))
             clock   = not clock
             o_byte_ = ser.read(5) 
@@ -77,11 +76,11 @@ def run_example_2():
             ser.write( b'\x01' )   
             o_byte = ser.read(5)     
             
-        print( o_byte[0],
-               o_byte[1],
-               o_byte[2],
-               o_byte[3],
-               o_byte[4],
+        print( o_byte[0], # p_char_in counter
+               o_byte[1], # i_clock_in state
+               o_byte[2], # i_rx_in state
+               o_byte[3], # o_Uart_DV state
+               o_byte[4], # o_Uart_Byte
         )
 
 

@@ -72,17 +72,19 @@ char i_rx=0;
 void connect_to_example_2(void){
     
     char byte_in = UART_1_GetChar();
-    
-    // Reset condition
+      
     if( byte_in == 'x' && (i_clock == 'x' || i_rx == 'x')){
+        // Reset condition
         char_in_count   = 0;
         i_clock         = 0;
         i_rx            = 0;        
     }else if( char_in_count%2 == 0){
+        // Set clock_in
         i_clock = byte_in;
         ++char_in_count;
     }else{
-        i_rx = UART_1_GetChar();
+        // Set rx_in
+        i_rx = byte_in;
         ++char_in_count;
     }
     
