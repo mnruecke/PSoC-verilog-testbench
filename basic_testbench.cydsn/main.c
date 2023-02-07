@@ -22,6 +22,7 @@ static const char CYCODE flash_userdata[230000]={0};
 
 void connect_to_example_1(void);
 void connect_to_example_2(void);
+void connect_to_example_2b(void);
 
 CY_ISR_PROTO( isr_rx_handle );
 
@@ -99,7 +100,10 @@ void connect_to_example_2(void){
     UART_1_PutChar( o_Uart_TB_RX_Byte_Read() );
     
     
-}//END connect_to_example_1()
+}//END connect_to_example_2()
+
+void connect_to_example_2b(void){ 
+}//END connect_to_example_2b()
 
 
 /* [] END OF FILE */

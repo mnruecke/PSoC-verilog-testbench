@@ -65,23 +65,39 @@ def run_example_2():
     )
     
     # 2) Generate test pattern for uart rx
+
+    clocks_per_bit = 3
     clock = 0
-    for quarter_clk in range(200):
+    clock_count = 0
+    r_rx_in = b'\x01'
+    tb_test_byte = bytes([ 0b_01010011 ])
+    tb_state = ['idle', 'startbit', 'databits', 'stopbit']
+    for tb_clk in range(200):
              
-        if quarter_clk % 2 == 0:
-            ser.write( bytes([clock]))
-            clock   = not clock
+        if tb_clk % 2 == 0:
+            clock   = not clock     
+            clock_count += clock
+            ser.write( bytes([clock]) )
             o_byte_ = ser.read(5) 
         else:
-            ser.write( b'\x01' )   
+            if clock_count == 10:
+                r_rx_in = b'\x00'
+            if clock_count == 10 + 2*clocks_per_bit-1: # byte: 0xff
+                r_rx_in = b'\x01'
+            ser.write( r_rx_in )   
             o_byte = ser.read(5)     
             
-        print( o_byte[0], # p_char_in counter
-               o_byte[1], # i_clock_in state
-               o_byte[2], # i_rx_in state
-               o_byte[3], # o_Uart_DV state
-               o_byte[4], # o_Uart_Byte
+        print( 
+               int(clock),
+               clock_count,
+               o_byte[0], # p_char_in counter
+               '\t', o_byte[1], # i_clock_in state
+               'rx: ', o_byte[2], # i_rx_in state
+               '\tDV: ', o_byte[3], # o_Uart_DV state
+               '\t', bin(o_byte[4]), # o_Uart_Byte
         )
+        
+
 
 
 """ END - main settings and definitions """
