@@ -94,10 +94,10 @@ def run_example_2():
             
         print( 
                clock_count,
-               '\t',        o_byte[1],  # i_Uart_clock state
-               'rx: ',      o_byte[2],  # i_Uart_rx state
-               '\tDV: ',    o_byte[3],  # o_Uart_DV state
-               '\t',    bin(o_byte[4]), # o_Uart_Byte
+               'i_clock:',     o_byte[1],  # i_Uart_clock state
+               'i_rx:',      o_byte[2],  # i_Uart_rx state
+               'o_DV:',      o_byte[3],  # o_Uart_DV state
+               'o_Byte:', bin(o_byte[4]), # o_Uart_Byte
         )
         
 
