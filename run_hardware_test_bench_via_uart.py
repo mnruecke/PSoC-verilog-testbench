@@ -80,9 +80,9 @@ def run_example_2():
             ser.write( bytes([clock]) )
             o_byte_ = ser.read(5) 
         else:
-            if clock_count == 10:
+            if clock_count == 10: # generate start bit
                 r_rx_in = b'\x00'
-            if clock_count == 10 + 2*clocks_per_bit-1: # byte: 0xff
+            if clock_count == 10 + (1+0)*clocks_per_bit: # send 0xff
                 r_rx_in = b'\x01'
             ser.write( r_rx_in )   
             o_byte = ser.read(5)     
