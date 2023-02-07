@@ -72,6 +72,7 @@ def run_example_2():
     r_rx_in = b'\x01'
     tb_test_byte = bytes([ 0b_01010011 ])
     tb_state = ['idle', 'startbit', 'databits', 'stopbit']
+    last_clock_level = o_byte[1]
     for tb_clk in range(172):
              
         if tb_clk % 2 == 0:
@@ -82,19 +83,21 @@ def run_example_2():
         else:
             if clock_count == 10: # generate start bit
                 r_rx_in = b'\x00'
-            if clock_count == 10 + (1+2)*clocks_per_bit: # send 0xff
+            if clock_count == 10 + (1+0)*clocks_per_bit: # send 0xff
                 r_rx_in = b'\x01'
             ser.write( r_rx_in )   
             o_byte = ser.read(5)     
             
+        if last_clock_level == 0 and o_byte[1] ==1:
+            print("clock posedge: -------------------------")
+        last_clock_level = o_byte[1]
+            
         print( 
-               int(clock),
                clock_count,
-               o_byte[0], # p_char_in counter
-               '\t', o_byte[1], # i_clock_in state
-               'rx: ', o_byte[2], # i_rx_in state
-               '\tDV: ', o_byte[3], # o_Uart_DV state
-               '\t', bin(o_byte[4]), # o_Uart_Byte
+               '\t',        o_byte[1],  # i_Uart_clock state
+               'rx: ',      o_byte[2],  # i_Uart_rx state
+               '\tDV: ',    o_byte[3],  # o_Uart_DV state
+               '\t',    bin(o_byte[4]), # o_Uart_Byte
         )
         
 
