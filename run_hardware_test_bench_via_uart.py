@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 """ main settings and definitions """
 
 # Serial port:
-serialPort = '\\\\.\\COM10'
+serialPort = '\\\\.\\COM4'
 baudrate = 115200
 time_out = 1
 
@@ -26,78 +26,83 @@ time_out = 1
 def run_example_1():
     # Testbench input data, basic example
     
-    i_tb_input_lsb  = 0b_1010_1111
+    uw_tb_input_lsb  = 0b_1010_1111
     
     for repetition_i in range( 1 ):
     
         print( "tb input port lsb:\t\t{}".format( bin(i_tb_input_lsb)))
         
-        ser.write( bytes([ i_tb_input_lsb ]))
+        ser.write( bytes([ uw_tb_input_lsb ]))
         time.sleep( 0.005 )     
-        o_tb_output_msb = ser.read(1)        
-        o_tb_output_lsb = ser.read(1)        
+        ur_tb_output_msb = ser.read(1)        
+        ur_tb_output_lsb = ser.read(1)        
         
-        o_tb_output_msb = int.from_bytes( o_tb_output_msb, 'big' )
-        print( "tb output port msb:\t\t{}".format( bin(o_tb_output_msb)))
-        o_tb_output_lsb = int.from_bytes( o_tb_output_lsb, 'big' )
-        print( "tb output port lsb:\t\t{}".format( bin(o_tb_output_lsb)))
+        ur_tb_output_msb = int.from_bytes( ur_tb_output_msb, 'big' )
+        print( "tb output port msb:\t\t{}".format( bin(ur_tb_output_msb)))
+        ur_tb_output_lsb = int.from_bytes( ur_tb_output_lsb, 'big' )
+        print( "tb output port lsb:\t\t{}".format( bin(ur_tb_output_lsb)))
         
         #print( "expected output: \t\t{}".format( bin( i_tb_input_lsb**2 )))    
 
 def run_example_2():
     # Testbench input data, uart rx example
+    # ur_X: uart_read_X; uw_X: uart_write_X
+    uw_reset = b'x' 
     
     # 1) Reset psoc routine
     def reset_test_routine():
-        ser.write( b'x' )   
-        o_byte = ser.read(5)
-        return o_byte
+        ser.write( uw_reset )   
+        ur_byte = ser.read(5)
+        return ur_byte
     
-    o_byte = reset_test_routine()
-    if o_byte[0] != 0:
-        o_byte = reset_test_routine()
+    ur_byte = reset_test_routine()
+    if ur_byte[0] != 0:
+        ur_byte = reset_test_routine()
 
-    print( o_byte[0],
-           o_byte[1],
-           o_byte[2],
-           o_byte[3],
-           o_byte[4],
+    print( ur_byte[0],
+           ur_byte[1],
+           ur_byte[2],
+           ur_byte[3],
+           ur_byte[4],
     )
     
     # 2) Generate test pattern for uart rx
+    bit_0_low  = b'\x00'
+    bit_0_high = b'\x01'
 
     clocks_per_bit = 3
     clock = 0
     clock_count = 0
-    r_rx_in = b'\x01'
+    uw_i_rx = bit_0_high
     tb_test_byte = bytes([ 0b_01010011 ])
     tb_state = ['idle', 'startbit', 'databits', 'stopbit']
-    last_clock_level = o_byte[1]
+    last_clock_level = ur_byte[1]
     for tb_clk in range(172):
              
         if tb_clk % 2 == 0:
             clock   = not clock     
             clock_count += clock
-            ser.write( bytes([clock]) )
-            o_byte_ = ser.read(5) 
+            uw_i_clock = bytes([clock])
+            ser.write( bytes( uw_i_clock ))
+            ur_byte = ser.read(5) 
         else:
             if clock_count == 10: # generate start bit
-                r_rx_in = b'\x00'
+                uw_i_rx = bit_0_low
             if clock_count == 10 + (1+0)*clocks_per_bit: # send 0xff
-                r_rx_in = b'\x01'
-            ser.write( r_rx_in )   
-            o_byte = ser.read(5)     
+                uw_i_rx = bit_0_high
+            ser.write( uw_i_rx )   
+            ur_byte = ser.read(5)     
             
-        if last_clock_level == 0 and o_byte[1] ==1:
+        if last_clock_level == 0 and ur_byte[1] ==1:
             print("clock posedge: -------------------------")
-        last_clock_level = o_byte[1]
+        last_clock_level = ur_byte[1]
             
         print( 
                clock_count,
-               'i_clock:',     o_byte[1],  # i_Uart_clock state
-               'i_rx:',      o_byte[2],  # i_Uart_rx state
-               'o_DV:',      o_byte[3],  # o_Uart_DV state
-               'o_Byte:', bin(o_byte[4]), # o_Uart_Byte
+               'i_clock:',      ur_byte[1],  # i_Uart_clock state
+               'i_rx:',         ur_byte[2],  # i_Uart_rx state
+               'o_DV:',         ur_byte[3],  # o_Uart_DV state
+               'o_Byte:', bin(  ur_byte[4]), # o_Uart_Byte
         )
         
 

@@ -89,15 +89,15 @@ void connect_to_example_2(void){
         ++char_in_count;
     }
     
-    i_Uart_TB_clock_Write( i_clock );
-    i_Uart_TB_rx_Write(    i_rx    );
+    i_Uart_TB_clock_Write( i_clock  );
+    i_Uart_TB_rx_Write(    i_rx     );
 
-    UART_1_PutChar( char_in_count );
-    UART_1_PutChar( i_clock );
-    UART_1_PutChar( i_rx );
+    UART_1_PutChar( char_in_count   );
+    UART_1_PutChar( i_clock         );
+    UART_1_PutChar( i_rx            );
     
-    UART_1_PutChar( o_Uart_TB_RX_DV_Read() );
-    UART_1_PutChar( o_Uart_TB_RX_Byte_Read() );
+    UART_1_PutChar( o_Uart_TB_RX_DV_Read()  );
+    UART_1_PutChar( o_Uart_TB_RX_Byte_Read());
     
     
 }//END connect_to_example_2()
