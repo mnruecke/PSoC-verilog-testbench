@@ -67,7 +67,7 @@ def run_example_2():
     )
     
     # 2) Generate test pattern for uart rx
-    tb_test_byte = 0b_1010_1100  
+    tb_test_byte = 0b_1111_0011
     
     bit_0_low  = b'\x00'
     bit_0_high = b'\x01'
@@ -81,26 +81,10 @@ def run_example_2():
 
     tb_state = ['idle', 'startbit', 'databits', 'stopbit']
     last_clock_level = ur_byte[1]
+    state = 'idle'
+    data_bit_idx = 0
     for tb_clk in range(172):
-        
-        if clock_count < tx_start:
-            state = 'idle'
-            #data_bit_idx = 0
-        elif (clock_count >= tx_start
-              and clock_count < tx_start + clocks_per_bit
-        ):
-            state = 'startbit'
-        elif (clock_count >= tx_start + clocks_per_bit
-              and clock_count < tx_start + 8*clocks_per_bit
-        ):
-            state = 'databits'
-            #data_bit_ix = (clock_count-tx_start) // clocks_per_bit
-        elif clock_count >= tx_start + 8*clocks_per_bit:
-            state = 'stopbit'
-            #data_bit_idx = 0
-        
-        print( state, data_bit_idx)
-             
+            
         if tb_clk % 2 == 0:
             
             # Generate clock cycle
@@ -111,26 +95,43 @@ def run_example_2():
             ur_byte = ser.read(5) 
         else:
             
-            # Generate start bit
-            if clock_count == tx_start:
+            # Determine state
+            if clock_count < tx_start:
+                state = 'idle'
+                data_bit_idx = 0
+            elif (clock_count >= tx_start
+                  and clock_count < tx_start + clocks_per_bit
+            ):
+                state = 'startbit'
+                data_bit_idx = 0
+            elif (clock_count >= tx_start + clocks_per_bit
+                  and clock_count < tx_start + 9*clocks_per_bit
+            ):
+                state = 'databits'
+                data_bit_idx = (clock_count-tx_start) // clocks_per_bit -1
+            elif clock_count >= tx_start + 9*clocks_per_bit:
+                state = 'stopbit'
+                data_bit_idx = 0
+                        
+            
+            
+            if state == 'idle':
+                uw_i_rx = bit_0_high
+            
+            if state == 'startbit':
                 uw_i_rx = bit_0_low
                 
             # Send data bits    
-            if (clock_count == tx_start
-                + (1 + data_bit_idx)*clocks_per_bit
-                and data_bit_idx < 8
-            ):
-                uw_i_rx = bytes(
-                    [(tb_test_byte >> data_bit_idx) & 0x01]    
-                )
-                data_bit_idx += 1
-               
+            if state == 'databits':
+                uw_i_rx = bytes([(tb_test_byte >> data_bit_idx) & 1])
+                
             # Generate stop bit
-            if clock_count == tx_start + (1+8)*clocks_per_bit:
+            if state == 'stopbit':
                 uw_i_rx = bit_0_high
                 
             ser.write( uw_i_rx )   
-            ur_byte = ser.read(5)     
+            ur_byte = ser.read(5)    
+            
             
         if last_clock_level == 0 and ur_byte[1] ==1:
             print("clock posedge: -------------------------")
