@@ -86,10 +86,33 @@ def run_example_2():
             ser.write( bytes( uw_i_clock ))
             ur_byte = ser.read(5) 
         else:
-            if clock_count == 10: # generate start bit
+            
+            # Generate start bit
+            if clock_count == 10:
                 uw_i_rx = bit_0_low
-            if clock_count == 10 + (1+0)*clocks_per_bit: # send 0xff
+                
+            # Send data bits    
+            if clock_count == 10 + (1+0)*clocks_per_bit:
                 uw_i_rx = bit_0_high
+            if clock_count == 10 + (1+1)*clocks_per_bit:
+                uw_i_rx = bit_0_high
+            if clock_count == 10 + (1+2)*clocks_per_bit:
+                uw_i_rx = bit_0_low
+            if clock_count == 10 + (1+3)*clocks_per_bit:
+                uw_i_rx = bit_0_high
+            if clock_count == 10 + (1+4)*clocks_per_bit:
+                uw_i_rx = bit_0_high
+            if clock_count == 10 + (1+5)*clocks_per_bit:
+                uw_i_rx = bit_0_low
+            if clock_count == 10 + (1+6)*clocks_per_bit:
+                uw_i_rx = bit_0_low
+            if clock_count == 10 + (1+7)*clocks_per_bit:
+                uw_i_rx = bit_0_high
+               
+            # Generate stop bit
+            if clock_count == 10 + (1+8)*clocks_per_bit:
+                uw_i_rx = bit_0_high
+                
             ser.write( uw_i_rx )   
             ur_byte = ser.read(5)     
             
