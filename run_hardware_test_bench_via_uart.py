@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 """ main settings and definitions """
 
 # Serial port:
-serialPort = '\\\\.\\COM4'
+serialPort = '\\\\.\\COM10'
 baudrate = 115200
 time_out = 1
 
@@ -67,19 +67,43 @@ def run_example_2():
     )
     
     # 2) Generate test pattern for uart rx
+    tb_test_byte = 0b_1010_1100  
+    
     bit_0_low  = b'\x00'
     bit_0_high = b'\x01'
 
+    tx_start = 10
+    data_bit_idx = 0
     clocks_per_bit = 3
     clock = 0
     clock_count = 0
     uw_i_rx = bit_0_high
-    tb_test_byte = bytes([ 0b_01010011 ])
+
     tb_state = ['idle', 'startbit', 'databits', 'stopbit']
     last_clock_level = ur_byte[1]
     for tb_clk in range(172):
+        
+        if clock_count < tx_start:
+            state = 'idle'
+            #data_bit_idx = 0
+        elif (clock_count >= tx_start
+              and clock_count < tx_start + clocks_per_bit
+        ):
+            state = 'startbit'
+        elif (clock_count >= tx_start + clocks_per_bit
+              and clock_count < tx_start + 8*clocks_per_bit
+        ):
+            state = 'databits'
+            #data_bit_ix = (clock_count-tx_start) // clocks_per_bit
+        elif clock_count >= tx_start + 8*clocks_per_bit:
+            state = 'stopbit'
+            #data_bit_idx = 0
+        
+        print( state, data_bit_idx)
              
         if tb_clk % 2 == 0:
+            
+            # Generate clock cycle
             clock   = not clock     
             clock_count += clock
             uw_i_clock = bytes([clock])
@@ -88,29 +112,21 @@ def run_example_2():
         else:
             
             # Generate start bit
-            if clock_count == 10:
+            if clock_count == tx_start:
                 uw_i_rx = bit_0_low
                 
             # Send data bits    
-            if clock_count == 10 + (1+0)*clocks_per_bit:
-                uw_i_rx = bit_0_high
-            if clock_count == 10 + (1+1)*clocks_per_bit:
-                uw_i_rx = bit_0_high
-            if clock_count == 10 + (1+2)*clocks_per_bit:
-                uw_i_rx = bit_0_low
-            if clock_count == 10 + (1+3)*clocks_per_bit:
-                uw_i_rx = bit_0_high
-            if clock_count == 10 + (1+4)*clocks_per_bit:
-                uw_i_rx = bit_0_high
-            if clock_count == 10 + (1+5)*clocks_per_bit:
-                uw_i_rx = bit_0_low
-            if clock_count == 10 + (1+6)*clocks_per_bit:
-                uw_i_rx = bit_0_low
-            if clock_count == 10 + (1+7)*clocks_per_bit:
-                uw_i_rx = bit_0_high
+            if (clock_count == tx_start
+                + (1 + data_bit_idx)*clocks_per_bit
+                and data_bit_idx < 8
+            ):
+                uw_i_rx = bytes(
+                    [(tb_test_byte >> data_bit_idx) & 0x01]    
+                )
+                data_bit_idx += 1
                
             # Generate stop bit
-            if clock_count == 10 + (1+8)*clocks_per_bit:
+            if clock_count == tx_start + (1+8)*clocks_per_bit:
                 uw_i_rx = bit_0_high
                 
             ser.write( uw_i_rx )   
@@ -120,6 +136,7 @@ def run_example_2():
             print("clock posedge: -------------------------")
         last_clock_level = ur_byte[1]
             
+        #'''
         print( 
                clock_count,
                'i_clock:',      ur_byte[1],  # i_Uart_clock state
@@ -127,7 +144,7 @@ def run_example_2():
                'o_DV:',         ur_byte[3],  # o_Uart_DV state
                'o_Byte:', bin(  ur_byte[4]), # o_Uart_Byte
         )
-        
+        #'''
 
 
 
