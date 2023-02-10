@@ -78,11 +78,10 @@ def run_example_2():
     clock = 0
     clock_count = 0
     uw_i_rx = bit_0_high
-
-    tb_state = ['idle', 'startbit', 'databits', 'stopbit']
     last_clock_level = ur_byte[1]
     state = 'idle'
     data_bit_idx = 0
+    
     for tb_clk in range(172):
             
         if tb_clk % 2 == 0:
@@ -93,6 +92,7 @@ def run_example_2():
             uw_i_clock = bytes([clock])
             ser.write( bytes( uw_i_clock ))
             ur_byte = ser.read(5) 
+            
         else:
             
             # Determine state
@@ -113,22 +113,19 @@ def run_example_2():
                 state = 'stopbit'
                 data_bit_idx = 0
                         
-            
-            
+            # Set rx bit       
             if state == 'idle':
                 uw_i_rx = bit_0_high
             
             if state == 'startbit':
                 uw_i_rx = bit_0_low
                 
-            # Send data bits    
             if state == 'databits':
                 uw_i_rx = bytes([(tb_test_byte >> data_bit_idx) & 1])
                 
-            # Generate stop bit
             if state == 'stopbit':
                 uw_i_rx = bit_0_high
-                
+            
             ser.write( uw_i_rx )   
             ur_byte = ser.read(5)    
             

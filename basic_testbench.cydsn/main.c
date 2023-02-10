@@ -33,6 +33,8 @@ int main(void)
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     UART_1_Start();
     isr_rx_StartEx( isr_rx_handle );
+    
+    Timer_1_Start();
   
     char uart_msg[80];
     sprintf( uart_msg, "PSOC running...\n\r" );
@@ -42,6 +44,9 @@ int main(void)
     {
         /* Place your application code here. */
 
+
+
+        
     }//END for(;;)
 }//END main()
 
@@ -49,7 +54,8 @@ int main(void)
 
 CY_ISR( isr_rx_handle )
 { 
-    connect_to_example_2();
+    
+    connect_to_example_2b();
     
     LED_Write(1); CyDelayUs(500); LED_Write(0); CyDelayUs(500);
 }//END CY_ISR( isr_rx_handle )
@@ -103,6 +109,32 @@ void connect_to_example_2(void){
 }//END connect_to_example_2()
 
 void connect_to_example_2b(void){ 
+    
+    // Flash memory timing
+    
+    const int clock_rate_mhz = 79;
+    const int data_size = 256;
+    
+    char uart_msg[80];
+    uint8 data[ data_size ];
+    for(int i=0; i < data_size; ++i)
+        data[i]=i;
+    
+    Timer_1_WriteCounter( 1000000000 );
+    long long tic, toc;
+    tic = Timer_1_ReadCounter();
+    //CyDelayUs(10); // Test calibration
+    // DUT:
+    Em_EEPROM_1_Write( (uint8*)data, (const uint8*) 0x10000, data_size);
+    toc = Timer_1_ReadCounter();
+    
+    
+    sprintf( uart_msg, "%d.", (int)((tic-toc)/clock_rate_mhz) );       
+    UART_1_PutString( uart_msg );
+    sprintf( uart_msg, "%2d us\n\r", (int)((100*(tic-toc))/79
+                                         - ((tic-toc)/clock_rate_mhz)*100));       
+    UART_1_PutString( uart_msg );
+
 }//END connect_to_example_2b()
 
 
