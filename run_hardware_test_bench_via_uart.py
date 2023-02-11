@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 """ main settings and definitions """
 
 # Serial port:
-serialPort = '\\\\.\\COM10'
+serialPort = '\\\\.\\COM4'
 baudrate = 115200
 time_out = 1
 
@@ -67,7 +67,7 @@ def run_example_2():
     )
     
     # 2) Generate test pattern for uart rx
-    tb_test_byte = 0b_1111_0011
+    tb_test_byte = 0b_1100_0011
     
     bit_0_low  = b'\x00'
     bit_0_high = b'\x01'
@@ -90,7 +90,11 @@ def run_example_2():
             clock   = not clock     
             clock_count += clock
             uw_i_clock = bytes([clock])
-            ser.write( bytes( uw_i_clock ))
+            
+            # Send clock state to uart
+            ser.write( bytes( uw_i_clock ))  
+            
+            # Acquire tb states via uart
             ur_byte = ser.read(5) 
             
         else:
@@ -126,7 +130,10 @@ def run_example_2():
             if state == 'stopbit':
                 uw_i_rx = bit_0_high
             
+            # Send rx_state to uart
             ser.write( uw_i_rx )   
+            
+            # Acquire tb states via uart
             ur_byte = ser.read(5)    
             
             
@@ -135,7 +142,7 @@ def run_example_2():
         last_clock_level = ur_byte[1]
             
         #'''
-        print( 
+        print( ur_byte[0],
                clock_count,
                'i_clock:',      ur_byte[1],  # i_Uart_clock state
                'i_rx:',         ur_byte[2],  # i_Uart_rx state

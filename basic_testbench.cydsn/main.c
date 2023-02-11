@@ -20,11 +20,17 @@
 // Declare byte array in flash memory:
 static const char CYCODE flash_userdata[230000]={0};
 
-void connect_to_example_1(void);
-void connect_to_example_2(void);
-void connect_to_example_2b(void);
+struct tb_inputs{
+    int     char_in_count;   
+    char    i_clock;
+    char    i_rx;   
+} tb_inputs_ex2;
 
-CY_ISR_PROTO( isr_rx_handle );
+void connect_to_example_1(void);
+void connect_to_example_2( struct tb_inputs * );
+void connect_to_example_3_flash(void);
+
+CY_ISR_PROTO( isr_uart_byte_received );
 
 int main(void)
 {
@@ -32,7 +38,7 @@ int main(void)
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     UART_1_Start();
-    isr_rx_StartEx( isr_rx_handle );
+    isr_rx_StartEx( isr_uart_byte_received );
     
     Timer_1_Start();
   
@@ -51,16 +57,19 @@ int main(void)
 }//END main()
 
 
-
-CY_ISR( isr_rx_handle )
-{ 
+CY_ISR( isr_uart_byte_received ){ 
     
-    connect_to_example_2b();
+    // Hookup test routine:
+    
+    //connect_to_example_1();
+    connect_to_example_2( &tb_inputs_ex2 );
+    //connect_to_example_3_flash();
     
     LED_Write(1); CyDelayUs(500); LED_Write(0); CyDelayUs(500);
 }//END CY_ISR( isr_rx_handle )
 
 void connect_to_example_1(void){
+    
     char putty = UART_1_GetChar();
     if( putty == 'x' ) CySoftwareReset();
     
@@ -69,38 +78,41 @@ void connect_to_example_1(void){
     
     // tb data out
     UART_1_PutChar( o_Testbench8_MSB_Read() );
-    UART_1_PutChar( o_Testbench8_LSB_Read() );    
+    UART_1_PutChar( o_Testbench8_LSB_Read() );   
+    
 }//END connect_to_example_1()
 
 
-int char_in_count=0;   
-char i_clock=0;
-char i_rx=1;
-void connect_to_example_2(void){
+void connect_to_example_2( struct tb_inputs * tb_inputs_ex2 ){
+    
+    // Verilog code testbench hookup
     
     char byte_in = UART_1_GetChar();
       
-    if( byte_in == 'x' && (i_clock == 'x' || i_rx == 'x')){
+    if( byte_in == 'x'
+        &&
+        (tb_inputs_ex2-> i_clock == 'x' || tb_inputs_ex2-> i_rx == 'x')
+       ){
         // Reset condition
-        char_in_count   = 0;
-        i_clock         = 0;
-        i_rx            = 1;        
-    }else if( char_in_count%2 == 0){
+        tb_inputs_ex2-> char_in_count   = 0;
+        tb_inputs_ex2-> i_clock         = 0;
+        tb_inputs_ex2-> i_rx            = 1;        
+    }else if( tb_inputs_ex2-> char_in_count%2 == 0){
         // Set clock_in
-        i_clock = byte_in;
-        ++char_in_count;
+        tb_inputs_ex2->   i_clock = byte_in;
+        ++tb_inputs_ex2-> char_in_count;
     }else{
         // Set rx_in
-        i_rx = byte_in;
-        ++char_in_count;
+        tb_inputs_ex2->   i_rx = byte_in;
+        ++tb_inputs_ex2-> char_in_count;
     }
     
-    i_Uart_TB_clock_Write( i_clock  );
-    i_Uart_TB_rx_Write(    i_rx     );
+    i_Uart_TB_clock_Write( tb_inputs_ex2-> i_clock  );
+    i_Uart_TB_rx_Write(    tb_inputs_ex2-> i_rx     );
 
-    UART_1_PutChar( char_in_count   );
-    UART_1_PutChar( i_clock         );
-    UART_1_PutChar( i_rx            );
+    UART_1_PutChar( tb_inputs_ex2-> char_in_count   );
+    UART_1_PutChar( tb_inputs_ex2-> i_clock         );
+    UART_1_PutChar( tb_inputs_ex2-> i_rx            );
     
     UART_1_PutChar( o_Uart_TB_RX_DV_Read()  );
     UART_1_PutChar( o_Uart_TB_RX_Byte_Read());
@@ -108,34 +120,44 @@ void connect_to_example_2(void){
     
 }//END connect_to_example_2()
 
-void connect_to_example_2b(void){ 
+void connect_to_example_3_flash(void){ 
     
-    // Flash memory timing
+    // Flash memory evaluation
     
     const int clock_rate_mhz = 79;
-    const int data_size = 256;
+    const int byte_count = 25600;
+    const int timer_counter_reset = 1000000000;
     
     char uart_msg[80];
-    uint8 data[ data_size ];
-    for(int i=0; i < data_size; ++i)
-        data[i]=i;
+    uint8 dummy_data[ byte_count ];
+    for(int i=0; i < byte_count; ++i)
+        dummy_data[i]=i;
     
-    Timer_1_WriteCounter( 1000000000 );
+    Timer_1_WriteCounter( timer_counter_reset );
     long long tic, toc;
     tic = Timer_1_ReadCounter();
-    //CyDelayUs(10); // Test calibration
+    //CyDelayUs(10); // Verify timer calibration
     // DUT:
-    Em_EEPROM_1_Write( (uint8*)data, (const uint8*) 0x10000, data_size);
+    Em_EEPROM_1_Write( (uint8*) dummy_data,
+                       (const uint8*) 0x10000,
+                        byte_count
+                      );
     toc = Timer_1_ReadCounter();
     
-    
-    sprintf( uart_msg, "%d.", (int)((tic-toc)/clock_rate_mhz) );       
+    sprintf( uart_msg, "Written flash bytes: %d\n\r",
+             byte_count
+            );   
     UART_1_PutString( uart_msg );
-    sprintf( uart_msg, "%2d us\n\r", (int)((100*(tic-toc))/79
-                                         - ((tic-toc)/clock_rate_mhz)*100));       
+    sprintf( uart_msg, "flash write duration: %d.",
+             (int)((tic-toc)/clock_rate_mhz)
+            );       
+    UART_1_PutString( uart_msg );
+    sprintf( uart_msg, "%2d us\n\r",
+             (int)((100*(tic-toc))/79 - ((tic-toc)/clock_rate_mhz)*100)
+            );       
     UART_1_PutString( uart_msg );
 
-}//END connect_to_example_2b()
+}//END connect_to_example_3_flash()
 
 
 /* [] END OF FILE */
